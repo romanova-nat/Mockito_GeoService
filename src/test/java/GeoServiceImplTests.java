@@ -12,7 +12,7 @@ import ru.netology.geo.GeoServiceImpl;
 import java.util.stream.Stream;
 
 public class GeoServiceImplTests {
-    GeoServiceImpl geoServiceImpl;
+    private GeoServiceImpl geoServiceImpl;
 
     @BeforeEach
     public void init() {

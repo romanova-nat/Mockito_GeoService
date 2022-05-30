@@ -1,13 +1,16 @@
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.BeforeEach;
 import ru.netology.entity.Country;
 import ru.netology.i18n.LocalizationServiceImpl;
 
+import static org.junit.Assert.assertEquals;
+
 public class LocalizationServiceImplTests {
 
-    LocalizationServiceImpl localizationService;
+    private LocalizationServiceImpl localizationService;
 
     @BeforeAll
     public static void start() {
@@ -21,8 +24,11 @@ public class LocalizationServiceImplTests {
 
     @Test
     public void localizationShouldBeRuOrEng() {
-        localizationService = Mockito.mock(LocalizationServiceImpl.class);
-        Mockito.when(localizationService.locale(Country.RUSSIA)).thenReturn("Добро пожаловать");
-        Mockito.when(localizationService.locale(Country.USA)).thenReturn("Welcome");
+        localizationService = new LocalizationServiceImpl();
+        Country country = Country.RUSSIA;
+        String expected = "Добро пожаловать";
+        String result = localizationService.locale(country);
+        assertEquals(expected, result);
     }
 }
+
